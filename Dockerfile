@@ -8,7 +8,7 @@ WORKDIR /app
 COPY . /app
 
 # Compile the Java application
-RUN javac src/Sample.java
+RUN javac Sample.java
 
 # Run the Java application
-CMD ["java", "src.Sample"]
+CMD ["java", "Sample"]
