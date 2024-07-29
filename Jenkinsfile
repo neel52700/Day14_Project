@@ -31,7 +31,7 @@ pipeline {
         stage('Deploy Container') {
             steps {
                 script {
-                    sh 'docker run -d --name day14_project -p 8080:8080 neelpatel5270/day14_project:latest' // Adjust port mapping as necessary
+                    docker.run('neelpatel5270/day14_project:latest') // Adjust port mapping as necessary
                 }
             }
         }
