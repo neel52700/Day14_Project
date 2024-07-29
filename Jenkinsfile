@@ -12,17 +12,17 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/neel52700/Day14_Project.git' // Your GitHub repository URL
             }
         }
-        stage('Build Docker Image') {
+        stage('Build') {
             steps {
                 script {
-                    docker.build("$DOCKERHUB_REPO:latest")
+                    docker.build(DOCKERHUB_REPO)
                 }
             }
         }
         stage('Push Docker Image') {
             steps {
                 script {
-                    docker.withRegistry('https://index.docker.io/v1/', 'DOCKERHUB_CREDENTIALS') {
+                    docker.withRegistry('', 'DOCKERHUB_CREDENTIALS') {
                         docker.image("$DOCKERHUB_REPO:latest").push()
                     }
                 }
@@ -31,7 +31,8 @@ pipeline {
         stage('Deploy Container') {
             steps {
                 script {
-                    docker.run('neelpatel5270/day14_project:latest') // Adjust port mapping as necessary
+                    sh 'javac Sample.java' // Adjust port mapping as necessary
+                    sh 'java Sample'
                 }
             }
         }
