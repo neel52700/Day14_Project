@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git 'https://github.com/neel52700/Day14_Project.git' // Your GitHub repository URL
+                git branch: 'main', url: 'https://github.com/neel52700/Day14_Project.git' // Your GitHub repository URL
             }
         }
         stage('Build Docker Image') {
