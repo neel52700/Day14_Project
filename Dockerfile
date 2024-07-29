@@ -1,14 +1,14 @@
-# Use an official OpenJDK runtime as a parent image
-FROM openjdk:11-jre-slim
+# Use the OpenJDK image with JDK installed
+FROM openjdk:11-slim
 
-# Set the working directory in the container
+# Set the working directory
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
+# Copy the application files
 COPY . /app
 
 # Compile the Java application
 RUN javac src/Sample.java
 
 # Run the Java application
-CMD ["java", "-cp", "src", "Sample"]
+CMD ["java", "src.Sample"]
